@@ -64,27 +64,27 @@ implements BluetoothServiceStateObserver{
         }
         TscCommand tsc = new TscCommand();
         if(speed != null){
-            tsc.addSpeed(speed);//设置打印速度
+            tsc.addSpeed(speed);//Set the print speed
         }
         if(density != null){
-            tsc.addDensity(density);//设置打印浓度
+            tsc.addDensity(density);//Set the print density
         }
-        tsc.addSize(width,height); //设置标签尺寸，按照实际尺寸设置
-        tsc.addGap(gap);           //设置标签间隙，按照实际尺寸设置，如果为无间隙纸则设置为0
-         tsc.addDirection(direction);//设置打印方向
-        //设置原点坐标
+        tsc.addSize(width,height); //Set the label size, set according to the actual size
+        tsc.addGap(gap);           //Set the label gap, set according to the actual size, set to 0 if there is no gap paper
+         tsc.addDirection(direction);//Set the print orientation
+        //Set the origin coordinates
         if (reference != null && reference.size() == 2) {
             tsc.addReference(reference.getInt(0), reference.getInt(1));
         } else {
             tsc.addReference(0, 0);
         }
-        tsc.addTear(enable); //撕纸模式开启
+        tsc.addTear(enable); //Tear mode is on
         if(home) {
             tsc.addBackFeed(16);
-            tsc.addHome();//走纸到开始位置
+            tsc.addHome();//Take the paper to the starting position
         }
-        tsc.addCls();// 清除打印缓冲区
-        //绘制简体中文
+        tsc.addCls();//Clear print buffer
+        //Draw Simplified Chinese
         for (int i = 0;texts!=null&& i < texts.size(); i++) {
             ReadableMap text = texts.getMap(i);
             String t = text.getString("text");
@@ -99,24 +99,24 @@ implements BluetoothServiceStateObserver{
             try {
                 byte[] temp = t.getBytes("UTF-8");
                 String temStr = new String(temp, "UTF-8");
-                t = new String(temStr.getBytes("GB2312"), "GB2312");//打印的文字
+                t = new String(temStr.getBytes("GB2312"), "GB2312");//Printed text
             } catch (Exception e) {
                 promise.reject("INVALID_TEXT", e);
                 return;
             }
 
-            tsc.addText(x, y, fonttype/*字体类型*/,
-                    rotation/*旋转角度*/, xscal/*横向放大*/, yscal/*纵向放大*/, t);
+            tsc.addText(x, y, fonttype/*Font type*/,
+                    rotation/*Rotation angle*/, xscal/*Lateral magnification*/, yscal/*Vertical magnification*/, t);
 
             if(bold){
                 tsc.addText(x+1, y, fonttype,
-                        rotation, xscal, yscal, t/*这里的t可能需要替换成同等长度的空格*/);
+                        rotation, xscal, yscal, t/*Here t may need to be replaced with spaces of equal length*/);
                 tsc.addText(x, y+1, fonttype,
-                        rotation, xscal, yscal, t/*这里的t可能需要替换成同等长度的空格*/);
+                        rotation, xscal, yscal, t/*Here t may need to be replaced with spaces of equal length*/);
             }
         }
 
-        //绘制图片
+        //Draw a picture
         if(images != null){
             for (int i = 0; i < images.size(); i++) {
                 ReadableMap img = images.getMap(i);
@@ -170,9 +170,9 @@ implements BluetoothServiceStateObserver{
             }
         }
 
-        tsc.addPrint(1, 1); // 打印标签
+        tsc.addPrint(1, 1); //Print label
         if (sound) {
-            tsc.addSound(2, 100); //打印标签后 蜂鸣器响
+            tsc.addSound(2, 100); //After printing the label, the buzzer sounds
         }
         Vector<Byte> bytes = tsc.getCommand();
         byte[] tosend = new byte[bytes.size()];

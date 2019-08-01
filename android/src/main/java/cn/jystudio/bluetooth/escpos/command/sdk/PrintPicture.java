@@ -36,8 +36,8 @@ public class PrintPicture {
 
 
     /**
-     * 打印位图函数
-     * 此函数是将一行作为一个图片打印，这样处理不容易出错
+     * Print bitmap function
+     * This function prints a line as a picture, so processing is not easy to make mistakes.
      *
      * @param mBitmap
      * @param nWidth
@@ -45,7 +45,7 @@ public class PrintPicture {
      * @return
      */
     public static byte[] POS_PrintBMP(Bitmap mBitmap, int nWidth, int nMode, int leftPadding) {
-        // 先转黑白，再调用函数缩放位图
+        // Turn black and white first, then call the function to scale the bitmap.
         int width = ((nWidth + 7) / 8) * 8;
         int height = mBitmap.getHeight() * width / mBitmap.getWidth();
         height = ((height + 7) / 8) * 8;
@@ -69,18 +69,13 @@ public class PrintPicture {
     }
 
     /**
-     * 使用下传位图打印图片
-     * 先收完再打印
+     * Print images using the lower bitmap
+     * Finish and print again
      *
      * @param bmp
      * @return
      */
     public static byte[] Print_1D2A(Bitmap bmp) {
-
-			/*
-			 * 使用下传位图打印图片
-			 * 先收完再打印
-			 */
         int width = bmp.getWidth();
         int height = bmp.getHeight();
         byte data[] = new byte[1024 * 10];
@@ -191,7 +186,7 @@ public class PrintPicture {
 
         for (int i = 0; i < nHeight; ++i) {
             int var10 = i * (8 + nBytesPerLine);
-            //GS v 0 m xL xH yL yH d1....dk 打印光栅位图
+            //GS v 0 m xL xH yL yH d1....dk Print raster bitmap
             data[var10 + 0] = 29;//GS
             data[var10 + 1] = 118;//v
             data[var10 + 2] = 48;//0

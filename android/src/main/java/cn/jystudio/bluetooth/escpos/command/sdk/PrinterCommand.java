@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class PrinterCommand {
 
     /**
-     * 打印机初始化
+     * Printer initialization
      *
      * @return
      */
@@ -15,7 +15,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 打印并换行
+     * Print and wrap
      *
      * @return
      */
@@ -24,7 +24,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 打印并走纸 (0~255)
+     * Print and take paper (0~255)
      *
      * @param feed
      * @return
@@ -38,7 +38,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 打印自检页
+     * Print a self-test page
      *
      * @return
      */
@@ -47,10 +47,10 @@ public class PrinterCommand {
     }
 
     /**
-     * 蜂鸣指令
+     * Beep command
      *
-     * @param m 蜂鸣次数
-     * @param t 每次蜂鸣的时间
+     * @param m Beep times
+     * @param t Time of each beep
      * @return
      */
     public static byte[] POS_Set_Beep(int m, int t) {
@@ -64,7 +64,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 切刀指令(走纸到切刀位置并切纸)
+     * Cutter command (feed paper to cutter position and cut paper)
      *
      * @param cut 0~255
      * @return
@@ -78,7 +78,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 钱箱指令
+     * Cash box instruction
      *
      * @param nMode
      * @param nTime1
@@ -97,7 +97,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 设置绝对打印位置
+     * Set absolute print position
      *
      * @param absolute
      * @return
@@ -112,7 +112,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 设置相对打印位置
+     * Set relative print position
      *
      * @param relative
      * @return
@@ -127,7 +127,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 设置左边距
+     * Set the left margin
      *
      * @param left
      * @return
@@ -142,7 +142,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 设置对齐模式
+     * Set the alignment mode
      *
      * @param align
      * @return
@@ -156,7 +156,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 设置打印区域宽度
+     * Set the print area width
      *
      * @param width
      * @return
@@ -171,7 +171,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 设置默认行间距
+     * Set default line spacing
      *
      * @return
      */
@@ -180,7 +180,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 设置行间距
+     * Set line spacing
      *
      * @param space
      * @return
@@ -194,7 +194,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 选择字符代码页
+     * Select character code page
      *
      * @param page
      * @return
@@ -208,14 +208,14 @@ public class PrinterCommand {
     }
 
     /**
-     * 打印文本文档
+     * Print text document
      *
-     * @param pszString    要打印的字符串
-     * @param encoding     打印字符对应编码
-     * @param codepage     设置代码页(0--255)
-     * @param nWidthTimes  倍宽(0--4)
-     * @param nHeightTimes 倍高(0--4)
-     * @param nFontType    字体类型(只对Ascii码有效)(0,1 48,49)
+     * @param pszString    The string to be printed
+     * @param encoding     Print character corresponding code
+     * @param codepage     Set up the code page(0-255)
+     * @param nWidthTimes  Double width (0-4)
+     * @param nHeightTimes Double height (0-4)
+     * @param nFontType    Font type (only valid for Ascii code)(0,1 48,49)
      */
     public static byte[] POS_Print_Text(String pszString, String encoding, int codepage,
                                         int nWidthTimes, int nHeightTimes, int nFontType) {
@@ -248,7 +248,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 加粗指令(最低位为1有效)
+     * Bold instruction (The lowest bit is 1)
      *
      * @param bold
      * @return
@@ -263,7 +263,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 设置倒置打印模式(当最低位为1时有效)
+     * Set inverted print mode (valid when the lowest bit is 1)
      *
      * @param brace
      * @return
@@ -275,7 +275,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 设置下划线
+     * Set underline
      *
      * @param line
      * @return
@@ -290,7 +290,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 选择字体大小(倍高倍宽)
+     * Select font size (double height)
      *
      * @param size1
      * @param size2
@@ -306,7 +306,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 设置反显打印
+     * Set reverse printing
      *
      * @param inverse
      * @return
@@ -318,7 +318,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 设置旋转90度打印
+     * Set rotation 90 degree printing
      *
      * @param rotate
      * @return
@@ -332,7 +332,7 @@ public class PrinterCommand {
     }
 
     /**
-     * 选择字体字型
+     * Select font 
      *
      * @param font
      * @return
@@ -346,15 +346,15 @@ public class PrinterCommand {
 
     }
 
-//***********************************以下函数为公开函数***********************************************************//
+// ######################### The following function is a public function #########################
 
     /**
-     * 二维码打印函数
+     * QR code print function
      *
-     * @param str                   打印二维码数据
-     * @param nVersion              二维码类型
-     * @param nErrorCorrectionLevel 纠错级别
-     * @param nMagnification        放大倍数
+     * @param str                   Print QR code data
+     * @param nVersion              QR code type
+     * @param nErrorCorrectionLevel Error correction level
+     * @param nMagnification        Magnification
      * @return
      */
     public static byte[] getQRCodeCommand(String str, int nVersion, int nErrorCorrectionLevel,
@@ -389,14 +389,14 @@ public class PrinterCommand {
     }
 
     /**
-     * 打印一维条码
+     * Print one-dimensional barcode
      *
-     * @param str              打印条码字符
-     * @param nType            条码类型(65~73)
-     * @param nWidthX          条码宽度
-     * @param nHeight          条码高度
-     * @param nHriFontType     HRI字型
-     * @param nHriFontPosition HRI位置
+     * @param str              Print barcode characters
+     * @param nType            Barcode type (65~73)
+     * @param nWidthX          Barcode width
+     * @param nHeight          Barcode height
+     * @param nHriFontType     HRI font
+     * @param nHriFontPosition HRI position
      * @return
      */
     public static byte[] getBarCodeCommand(String str, int nType, int nWidthX, int nHeight,
@@ -440,13 +440,13 @@ public class PrinterCommand {
     }
 
     /**
-     * 设置打印模式(选择字体(font:A font:B),加粗,字体倍高倍宽(最大4倍高宽))
+     * Set the print mode (select font (font:A font: B), bold, double the font width (maximum 4 times height and width))
      *
-     * @param str        打印的字符串
-     * @param bold       加粗
-     * @param font       选择字型
-     * @param widthsize  倍宽
-     * @param heigthsize 倍高
+     * @param str        Printed string
+     * @param bold       Bold
+     * @param font       Font
+     * @param widthsize  Double width
+     * @param heigthsize Double height
      * @return
      */
     public static byte[] POS_Set_Font(String str, int bold, int font, int widthsize, int heigthsize) {
@@ -465,8 +465,8 @@ public class PrinterCommand {
 
         byte[] command = new byte[strData.length + 9];
 
-        byte[] intToWidth = {0x00, 0x10, 0x20, 0x30};//最大四倍宽
-        byte[] intToHeight = {0x00, 0x01, 0x02, 0x03};//最大四倍高
+        byte[] intToWidth = {0x00, 0x10, 0x20, 0x30};//Up to four times wider
+        byte[] intToHeight = {0x00, 0x01, 0x02, 0x03};//Up to four times higher
 
         command[0] = 27;
         command[1] = 69;

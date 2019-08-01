@@ -335,9 +335,9 @@ public class RNBluetoothEscposPrinterModule extends ReactContextBaseJavaModule
         if (mBitmap != null) {
             /**
              * Parameters:
-             * mBitmap  要打印的图片
-             * nWidth   打印宽度（58和80）
-             * nMode    打印模式
+             * mBitmap  The image to be printed
+             * nWidth   Print width (58 and 80)
+             * nMode    Print mode
              * Returns: byte[]
              */
             byte[] data = PrintPicture.POS_PrintBMP(mBitmap, width, nMode, leftPadding);
@@ -385,8 +385,8 @@ public class RNBluetoothEscposPrinterModule extends ReactContextBaseJavaModule
     @ReactMethod
     public void printQRCode(String content, int size, int correctionLevel, final Promise promise) {
         try {
-            Log.i(TAG, "生成的文本：" + content);
-            // 把输入的文本转为二维码
+            Log.i(TAG, "Generated text:" + content);
+            // Convert the input text to a QR code
             Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
             hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
             hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.forBits(correctionLevel));
@@ -442,7 +442,7 @@ public class RNBluetoothEscposPrinterModule extends ReactContextBaseJavaModule
         return true;
     }
 
-    // 根据Unicode编码完美的判断中文汉字和符号
+    // Perfectly judge Chinese characters and symbols according to Unicode encoding
     private static boolean isChinese(char c) {
         Character.UnicodeBlock ub = Character.UnicodeBlock.of(c);
         if (ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
